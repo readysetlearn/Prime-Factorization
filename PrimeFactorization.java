@@ -25,8 +25,7 @@ public class PrimeFactorization {
         if(input % 2 == 0) {
             return false;
         }
-        
-        //System.out.println("Math.floor(Math.sqrt(input)): "+Math.floor(Math.sqrt(input)));
+
         for(int i = 3; i <= Math.floor(Math.sqrt(input)); i += 2) {       
             if(input % i == 0) {
                 return false;
