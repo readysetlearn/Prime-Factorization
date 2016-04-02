@@ -7,7 +7,7 @@ public class PrimeFactorization {
 
 
     public static void main(String[] args) {
-        int test = 1001;
+        int test = 10013;
         ArrayList<Integer> factors = factor(test);
         for(Integer i : factors) {
             System.out.println(i);
