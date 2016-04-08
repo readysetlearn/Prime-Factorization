@@ -2,18 +2,28 @@ public class SieveOfEratosthenes {
 
 
     public static void main(String[] args) {
-        int test = 10013;
-        int sqrt = (int)Math.floor(Math.sqrt(10013));
+        int testNumber = 40;
+        boolean[] composite = doSieve(testNumber);
+        for(int i = 2; i < composite.length; i++) {//start index at 2 as 2 is the smallest prime
+            if(!composite[i])
+                System.out.println(i);
+        }
     }
     
-    /*input limit: square root of number to find prime factors of*/
-    public static void doSieve(int limit) {
-        boolean[] primes  = new boolean[limit];
-        for(int i = 2; i < limit; i++) {
-            for(int j = 1; i * j  < limit; j++) {
-                primes[j] = true;//default value of boolean array is false
+    /*input limit: square root of number to find prime factors of
+    return: array of booleans where false means index is a prime*/
+    public static boolean[] doSieve(int limit) {
+        boolean[] composite  = new boolean[limit];//boolean arrays are intialized to false, so at start assume no numbers are composite
+        composite[0] = composite [1] = true;//The numbers 0 and 1 are special cases and are considered composite
+        for(int i = 2; i < Math.ceil(Math.sqrt(limit)); i++) {
+            if(!composite[i]) {
+                for(int j = i*i; j < limit; j += i) {
+                    composite[j] = true;//found a composite number
+                }
             }
         }
+        
+        return composite;
     }
     
 }
