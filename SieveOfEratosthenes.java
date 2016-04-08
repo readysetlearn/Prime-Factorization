@@ -15,7 +15,13 @@ public class SieveOfEratosthenes {
     public static boolean[] doSieve(int limit) {
         boolean[] composite  = new boolean[limit];//boolean arrays are intialized to false, so at start assume no numbers are composite
         composite[0] = composite [1] = true;//The numbers 0 and 1 are special cases and are considered composite
-        for(int i = 2; i < Math.ceil(Math.sqrt(limit)); i++) {
+        
+        /*optimization: check for multiples of 2 here so can focus only on odds latter*/
+        for(int i = 2; i < limit; i += 2) {
+            composite[i] = true;
+        }
+        
+        for(int i = 3; i < Math.ceil(Math.sqrt(limit)); i += 2) {
             if(!composite[i]) {
                 for(int j = i*i; j < limit; j += i) {
                     composite[j] = true;//found a composite number
