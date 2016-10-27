@@ -2,7 +2,7 @@ public class SieveOfEratosthenes {
 
 
     public static void main(String[] args) {
-        int testNumber = 40;
+        int testNumber = 9991055;
         boolean[] composite = doSieve(testNumber);
         for(int i = 2; i < composite.length; i++) {//start index at 2 as 2 is the smallest prime
             if(!composite[i])
